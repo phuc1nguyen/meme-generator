@@ -3,7 +3,6 @@ from datetime import datetime
 import subprocess
 import pandas as pd
 from docx import Document
-
 from abc import ABC, abstractmethod
 from typing import List
 
