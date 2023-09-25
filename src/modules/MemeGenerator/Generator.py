@@ -4,6 +4,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 class MemeGenerator:
     """A generator that generates memes."""
+    allowed_extensions = ['jpeg', 'png', 'jpg']
 
     def __init__(self, out_dir: str):
         """Create a new meme."""
@@ -11,10 +12,9 @@ class MemeGenerator:
 
     def can_load(self, path: str) -> bool:
         """Check if the image can be loaded."""
-        allow_extensions = ['jpeg', 'png', 'jpg']
         ext = path.split('.')[-1]
 
-        return ext in allow_extensions
+        return ext in self.allowed_extensions
 
     def make_meme(self, img_path, text, author, width=500) -> str:
         """Manipulate given image into meme then generate meme path."""
