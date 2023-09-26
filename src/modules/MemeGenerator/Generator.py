@@ -37,6 +37,7 @@ class MemeGenerator:
 
             # add quote to image
             if text and author:
+                # TODO: random position for quotes
                 font = ImageFont.truetype('./_data/fonts/Roboto-Bold.ttf', 16)
                 quote = f"\"{text}\" - {author}"
                 quote_position = (50, img.height - 50)
@@ -48,4 +49,4 @@ class MemeGenerator:
         meme_path = f"{self.out_dir}/{meme_name}"
         img.save(meme_path)
 
-        return f"meme-generator/src/{meme_path[2:]}"
+        return meme_path
