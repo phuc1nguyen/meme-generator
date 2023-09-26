@@ -2,13 +2,13 @@ from typing import List
 
 from .IngestorInterface import IngestorInterface
 from ..QuoteEngine import Quote
-from .const.Extension import QuoteExtension
+from .._const.Extension import QuoteExtension
 
 
 class TxtIngestor(IngestorInterface):
     """An ingestor that realize IngestorInterface to ingest TXT file type."""
 
-    allowed_extensions = [QuoteExtension.TXT]
+    allowed_extensions = [QuoteExtension.TXT.value]
 
     @classmethod
     def parse(cls, path: str) -> List[Quote]:

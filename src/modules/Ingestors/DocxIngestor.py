@@ -3,13 +3,13 @@ from typing import List
 
 from .IngestorInterface import IngestorInterface
 from ..QuoteEngine import Quote
-from .const.Extension import QuoteExtension
+from .._const.Extension import QuoteExtension
 
 
 class DocxIngestor(IngestorInterface):
     """An ingestor that realize IngestorInterface to handle Docx file type."""
 
-    allowed_extensions = [QuoteExtension.DOCX]
+    allowed_extensions = [QuoteExtension.DOCX.value]
 
     @classmethod
     def parse(cls, path: str) -> List[Quote]:

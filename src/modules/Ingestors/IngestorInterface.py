@@ -10,7 +10,6 @@ class IngestorInterface(ABC):
     allowed_extensions = []
 
     @classmethod
-    @abstractmethod
     def can_ingest(cls, path: str) -> bool:
         """Class abstract method to check if file ingestable."""
         ext = path.split('.')[-1]

@@ -1,10 +1,11 @@
+from .._const.Extension import PhotoExtension
 from datetime import datetime
 from PIL import Image, ImageDraw, ImageFont
 
 
 class MemeGenerator:
     """A generator that generates memes."""
-    allowed_extensions = ['jpeg', 'png', 'jpg']
+    allowed_extensions = [enum.value for enum in PhotoExtension]
 
     def __init__(self, out_dir: str):
         """Create a new meme."""
@@ -18,7 +19,7 @@ class MemeGenerator:
 
     def make_meme(self, img_path, text, author, width=500) -> str:
         """Manipulate given image into meme then generate meme path."""
-        if not self.can_load():
+        if not self.can_load(img_path):
             raise Exception('Invalid image type')
 
         if type(img_path) != str:
@@ -36,15 +37,15 @@ class MemeGenerator:
 
             # add quote to image
             if text and author:
-                font = ImageFont.truetype('./fonts/Roboto-Bold.ttf', 16)
+                font = ImageFont.truetype('./_data/fonts/Roboto-Bold.ttf', 16)
                 quote = f"\"{text}\" - {author}"
                 quote_position = (50, img.height - 50)
                 draw = ImageDraw.Draw(img)
                 draw.text(quote_position, quote, font=font, fill='white')
 
         img_name = img_path.split('/')[-1]
-        meme_name = f"{datetime.now().timestamp()}_{img_name}"
+        meme_name = f"{round(datetime.now().timestamp())}_{img_name}"
         meme_path = f"{self.out_dir}/{meme_name}"
         img.save(meme_path)
 
-        return meme_path
+        return f"meme-generator/src/{meme_path[2:]}"
