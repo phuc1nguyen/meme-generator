@@ -26,7 +26,7 @@ class MemeGenerator:
         if type(img_path) != str:
             raise Exception('Invalid image path')
 
-        with Image.open(img_path) as img:
+        with Image.open(img_path).convert('RGB') as img:
             max_width = width
             hw_ratio = float(img.size[1]) / float(img.size[0])
 
