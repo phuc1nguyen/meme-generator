@@ -1,4 +1,5 @@
 from .._const.Extension import PhotoExtension
+import random
 from datetime import datetime
 from PIL import Image, ImageDraw, ImageFont
 
@@ -37,12 +38,17 @@ class MemeGenerator:
 
             # add quote to image
             if text and author:
-                # TODO: random position for quotes
                 font = ImageFont.truetype('./_data/fonts/Roboto-Bold.ttf', 16)
-                quote = f"\"{text}\" - {author}"
-                quote_position = (50, img.height - 50)
+
+                randomVerticalPos = random.choice(range(30, img.height - 30))
+                quote1 = f"\"{text}\""
+                quote1_position = (30, randomVerticalPos)
+                quote2 = f"- {author}"
+                quote2_position = (45, randomVerticalPos + 20)
+
                 draw = ImageDraw.Draw(img)
-                draw.text(quote_position, quote, font=font, fill='white')
+                draw.text(quote1_position, quote1, font=font, fill='white')
+                draw.text(quote2_position, quote2, font=font, fill='white')
 
         img_name = img_path.split('/')[-1]
         meme_name = f"{round(datetime.now().timestamp())}_{img_name}"
