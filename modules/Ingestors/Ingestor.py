@@ -3,7 +3,7 @@
 from typing import List
 
 from .IngestorInterface import IngestorInterface
-from .CsvIngestor import CSVIngestor
+from .CsvIngestor import CsvIngestor
 from .DocxIngestor import DocxIngestor
 from .PdfIngestor import PdfIngestor
 from .TxtIngestor import TxtIngestor
@@ -13,7 +13,7 @@ from ..QuoteEngine import Quote
 class Ingestor(IngestorInterface):
     """Main ingestor class that has smart parser."""
 
-    ingestors = [CSVIngestor, DocxIngestor, PdfIngestor, TxtIngestor]
+    ingestors = [CsvIngestor, DocxIngestor, PdfIngestor, TxtIngestor]
 
     @classmethod
     def parse(cls, path: str) -> List[Quote]:

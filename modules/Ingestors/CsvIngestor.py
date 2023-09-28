@@ -8,7 +8,7 @@ from ..QuoteEngine import Quote
 from .._const.Extension import QuoteExtension
 
 
-class CSVIngestor(IngestorInterface):
+class CsvIngestor(IngestorInterface):
     """A CSV Ingestor."""
 
     allowed_extensions = [QuoteExtension.CSV.value]

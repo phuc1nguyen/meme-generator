@@ -9,22 +9,34 @@ from PIL import Image, ImageDraw, ImageFont
 class MemeGenerator:
     """A generator that generates memes."""
 
+    _QUOTE_MAX_LENGTH = 50
+    _AUTHOR_MAX_LENGTH = 20
     allowed_extensions = [enum.value for enum in PhotoExtension]
 
     def __init__(self, out_dir: str):
         """Create a new meme."""
         self.out_dir = out_dir
 
+    def validator(self, text, author):
+        """Check if quote body and author exceeds maximum number of characters."""
+        if len(text) >= self._QUOTE_MAX_LENGTH:
+            raise Exception(
+                f"Quote body exceeds maximum {self._QUOTE_MAX_LENGTH} characters.")
+        if len(author) >= self._AUTHOR_MAX_LENGTH:
+            raise Exception(
+                f"Author exceeds maxium {self._AUTHOR_MAX_LENGTH} characters.")
+
     def can_load(self, path: str) -> bool:
         """Check if the image can be loaded."""
         ext = path.split('.')[-1]
-
         return ext in self.allowed_extensions
 
     def make_meme(self, img_path, text, author, width=500) -> str:
         """Manipulate given image into meme then generate meme path."""
         if not self.can_load(img_path):
             raise Exception('Invalid image type')
+
+        self.validator(text, author)
 
         with Image.open(img_path).convert('RGB') as img:
             max_width = width
