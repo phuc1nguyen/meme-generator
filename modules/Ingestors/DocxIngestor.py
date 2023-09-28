@@ -1,3 +1,5 @@
+"""An ingestor that inherits IngestorInterface to handle Docx file type."""
+
 from docx import Document
 from typing import List
 
@@ -7,13 +9,13 @@ from .._const.Extension import QuoteExtension
 
 
 class DocxIngestor(IngestorInterface):
-    """An ingestor that realize IngestorInterface to handle Docx file type."""
+    """A Docx Ingestor."""
 
     allowed_extensions = [QuoteExtension.DOCX.value]
 
     @classmethod
     def parse(cls, path: str) -> List[Quote]:
-        """Overwritten classmethod to parse TXT file."""
+        """Overwritten classmethod to parse DOCX file."""
         if not cls.can_ingest(path):
             raise Exception('Invalid file type!')
 

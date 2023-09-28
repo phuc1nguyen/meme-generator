@@ -1,3 +1,5 @@
+"""Abstract class to realize other ingestors for various file types."""
+
 from abc import ABC, abstractmethod
 from typing import List
 

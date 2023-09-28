@@ -1,3 +1,8 @@
+"""Implementation of the Flask server for Meme Generator.
+
+See `README.md` for more details on how to use this generator.
+"""
+
 import random
 import os
 import requests

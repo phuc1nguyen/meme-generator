@@ -1,3 +1,5 @@
+"""An ingestor that inherits IngestorInterface to handle CSV file type."""
+
 import pandas as pd
 from typing import List
 
@@ -7,7 +9,7 @@ from .._const.Extension import QuoteExtension
 
 
 class CSVIngestor(IngestorInterface):
-    """An ingestor that realize IngestorInterface to handle CSV file type."""
+    """A CSV Ingestor."""
 
     allowed_extensions = [QuoteExtension.CSV.value]
 

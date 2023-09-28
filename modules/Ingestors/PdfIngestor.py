@@ -1,3 +1,5 @@
+"""An ingestor that inherits IngestorInterface to handle PDF file type."""
+
 import os
 import subprocess
 from datetime import datetime
@@ -9,7 +11,7 @@ from .._const.Extension import QuoteExtension
 
 
 class PdfIngestor(IngestorInterface):
-    """An ingestor that realize IngestorInterface to handle PDF file type."""
+    """A PDF Ingestor."""
 
     allowed_extensions = [QuoteExtension.PDF.value]
 

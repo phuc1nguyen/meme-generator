@@ -1,3 +1,5 @@
+"""An ingestor that inherits IngestorInterface to handle TXT file type."""
+
 from typing import List
 
 from .IngestorInterface import IngestorInterface
@@ -6,12 +8,13 @@ from .._const.Extension import QuoteExtension
 
 
 class TxtIngestor(IngestorInterface):
-    """An ingestor that realize IngestorInterface to ingest TXT file type."""
+    """A TXT Ingestor."""
 
     allowed_extensions = [QuoteExtension.TXT.value]
 
     @classmethod
     def parse(cls, path: str) -> List[Quote]:
+        """Overwritten classmethod to parse TXT file."""
         if not cls.can_ingest(path):
             raise Exception('Invalid file type!')
 
