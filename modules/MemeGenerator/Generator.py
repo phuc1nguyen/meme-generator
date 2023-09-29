@@ -40,12 +40,12 @@ class MemeGenerator:
 
         with Image.open(img_path).convert('RGB') as img:
             max_width = width
-            hw_ratio = float(img.size[1]) / float(img.size[0])
+            hw_ratio = img.size[1] / img.size[0]
 
             # resize image if too wide
             if img.width > max_width:
                 img = img.resize(
-                    (max_width, max_width * hw_ratio), Image.NEAREST)
+                    (max_width, round(max_width * hw_ratio)), Image.NEAREST)
                 print("Image is resized down to 500x500", img)
 
             # add quote to image
