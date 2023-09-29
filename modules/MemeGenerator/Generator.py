@@ -21,10 +21,10 @@ class MemeGenerator:
         """Check if quote body and author exceeds maximum number of characters."""
         if len(text) >= self._QUOTE_MAX_LENGTH:
             raise Exception(
-                f"Quote body exceeds maximum {self._QUOTE_MAX_LENGTH} characters.")
+                f"Quote body exceeds maximum {self._QUOTE_MAX_LENGTH} characters. Quote body: {text}")
         if len(author) >= self._AUTHOR_MAX_LENGTH:
             raise Exception(
-                f"Author exceeds maxium {self._AUTHOR_MAX_LENGTH} characters.")
+                f"Author exceeds maxium {self._AUTHOR_MAX_LENGTH} characters. Author: {author}")
 
     def can_load(self, path: str) -> bool:
         """Check if the image can be loaded."""
@@ -50,11 +50,9 @@ class MemeGenerator:
 
             # add quote to image
             if text and author:
-                font = ImageFont.truetype(
-                    './_data/fonts/Roboto-Bold.ttf', 16)
+                font = ImageFont.truetype('./_data/fonts/Roboto-Bold.ttf', 16)
 
-                randomVerticalPos = random.choice(
-                    range(30, img.height - 30))
+                randomVerticalPos = random.choice(range(30, img.height - 50))
                 quote1 = f"\"{text}\""
                 quote1_position = (30, randomVerticalPos)
                 quote2 = f"- {author}"
